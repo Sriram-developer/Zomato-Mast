@@ -15,7 +15,7 @@ params  :  None
 Access  :  Public
 Method  :  POST
 */
-Router.post("/singup", async (req, res) => {
+Router.post("/signup", async (req, res) => {
     try {
 
         const { email, password, fullname, phoneNumber } = req.body.credentials;
@@ -34,10 +34,10 @@ Router.post("/singup", async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, bcryptSalt);
 
         // save to DB
-        await UserModel.create({ ...req.body.credentials, password: hashedPassword });
+        await UserModel.create({ ...req.body.credentials, password: hashedPassword, });
 
         // generate JWT auth token 
-        const token = jwt.sign({user: { fullname, email } }, "ZomatoAPP");
+        const token = jwt.sign({ user: { fullname, email } }, "ZomatoAPP");
 
         // return 
         return res.status(200).json({ token, status: "success" });
