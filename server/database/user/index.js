@@ -38,7 +38,7 @@ UserSchema.statics.findByEmailAndPassword = async ({ email, password }) => {
 
   // compare password 
   const doesPasswordMatch = await bcrypt.compare(password, user.password);
-  if(!doesPasswordMatch) throw new Error("Invalid password!!!");
+  if(!doesPasswordMatch) throw new Error("invalid password!!!");
 
   return user;
 };
@@ -53,7 +53,7 @@ UserSchema.pre("save", function (next){
   bcrypt.genSalt(8, (error, salt) => {
     if (error) return next (error);
 
-    // hash tyhe password
+    // hash type password
     bcrypt.hash(user.password, salt, (error,hash) => { 
       if(error) return next(error);
 
