@@ -14,10 +14,10 @@ params  :  None
 Access  :  Public
 Method  :  GET
 */
-Router.get("/",async (req, res) => {
+Router.get("/", async (req, res) => {
   try {
     const { city }= req.query;
-    const allRestaurants = await RestaurantModel.find({ city });
+    const restaurants = await RestaurantModel.find({ city });
     return res.json({ restaurants });
   } catch (error) {
     return res.status(500).json({ error: error.message }); 
@@ -56,11 +56,11 @@ Router.get("/search", async (req,res) => {
  try {
       const { searchString } = req.body;
       const restaurants = await RestaurantModel.find({ 
-        name: { $regex: searchString, $options: "i"  } });
+        name: { $regex: searchString, $options: "i"  }, });
       if(!restaurant)
         return res.status(404).json({ error: `No Restaurant matched with ${ searchString }` });
   
-        return res.json({ restaurant })
+        return res.json({ restaurants });
     } catch (error) {
         return res.status(500).json({ error: error.message });  
     }

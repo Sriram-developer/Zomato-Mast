@@ -14,7 +14,7 @@ params  :  _id
 Access  :  Public
 Method  :  GET
 */
-Router.get("/list/:_id", (req, res) => {
+Router.get("/list/:_id", async (req, res) => {
   try {
        const {_id } = req.params;
        const menus = await MenuModel.findOne(_id);
@@ -40,3 +40,5 @@ Router.get("/image/:_id", async (req, res) => {
        return res.status(500).json({ error: error.message });
     }
 });
+
+export default Router;
