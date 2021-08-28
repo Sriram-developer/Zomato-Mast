@@ -1,8 +1,9 @@
 import AWS from "aws-sdk";
-import dotenv from "dotenv";
+/*import dotenv from "dotenv";
 dotenv.config({
 path: require("path").resolve(__dirname, "../.env"),
-});
+});*/
+require("dotenv").config();
 
 // AWS s3 bucket config
 const s3Bucket = new AWS.S3({
