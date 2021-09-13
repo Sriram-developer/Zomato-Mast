@@ -1,7 +1,7 @@
 import React from "react";
 
 // components
-import RestaurantNavbar from "../Components/Navbar/restaurantNavbar";
+import RestaurantNavbar from "../Components/Navbar/RestaurantNavbar";
 import ImageGrid from "../Components/restaurant/ImageGrid";
 
 const RestaurantLayout = () => {
