@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoMdArrowDropright } from "react-icons/io";
-import { MdContentCopy } from "react-icons/md";
-import { FaDirections } from "react-icons/fa";
 import Slider from "react-slick";
+import { useSelector, useDispatch } from "react-redux";
 import ReactStars from "react-rating-stars-component";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 // components
 import MenuCollection from "../../Components/restaurant/MenuCollection";
@@ -14,7 +12,11 @@ import { NextArrow, PrevArrow } from "../../Components/CarousalArrow";
 import ReviewCard from "../../Components/restaurant/Reviews/reviewCard";
 import Mapview from "../../Components/restaurant/Mapview";
 
+// Redux actions
+import { getImage } from "../../Redux/Reducer/Image/Image.action";
+
 const Overview = () => {
+  const [menuImage, setMenuImages] = useState({ images: [] });
   const { id } = useParams();
 
   const settings = {
@@ -27,9 +29,29 @@ const Overview = () => {
     prevArrow: <PrevArrow />,
   };
 
+  const reduxState = useSelector((globalStore) => globalStore.restaurant.selectedRestaurant.restaurant);
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (reduxState) {
+      dispatch(getImage(reduxState?.menuImages)).then((data) => { 
+        const images = [];
+        data.payload.image.images.map(({ location }) =>images.push(location));
+        setMenuImages(images);
+      });
+    }
+  }, []);
+
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+
+  const getLatLong = (mapAddress) => {
+    return mapAddress?.split(",").map((item) => parseFloat(item));
+  };
+  console.log(
+    reduxState?.mapLocation?.split(",").map((item) => parseFloat(item))
+  );
   return (
     <>
       <div className="flex flex-col md:flex-row relative">
@@ -49,26 +71,20 @@ const Overview = () => {
             <MenuCollection
               menuTitle="Menu"
               pages="3"
-              image={["https://b.zmtcdn.com/data/menus/578/18975578/42e80294e6d08c32f1c872e621913999.jpg",
-              "https://b.zmtcdn.com/data/menus/367/18899367/6800792edd0296ea061dcfe1e40a9412.jpg",
-             ]}
+              image={ menuImage }
             />
           </div>
           <h4 className="text-lg font-medium my-4">Cuisines</h4>
           <div className="flex flex-wrap gap-2">
+            {reduxState?.cuisine.map((data) => (
             <span className="border border-gray-600 text-blue-600 px-2 py-1 rounded-full">
-              Street Food
+              { data }
             </span>
-            <span className="border border-gray-600 text-blue-600 px-2 py-1 rounded-full">
-              Street Food
-            </span>
-            <span className="border border-gray-600 text-blue-600 px-2 py-1 rounded-full">
-              Street Food
-            </span>
+            ))}
           </div>
           <div className="my-4">
             <h4 className="text-lg font-medium">Average Cost</h4>
-            <h6>₹100 for one order (approx.)</h6>
+            <h6>₹ { reduxState?.averageCost } for one order (approx.)</h6>
             <small className="text-gray-500">
               Exclusive of applicable taxes and charges, if any
             </small>
@@ -112,10 +128,10 @@ const Overview = () => {
             />
           </div>
           <div className="my-4 w-full md:hidden flex flex-col gap-4">
-          <Mapview title="Madurai Xpress"
-          phno="+918870465786"
-          mapLocation={ [9.923433046778332, 78.11539586769574 ] }
-           address="No-16 VOC Nagar 5th Street, P.P Chavadi, Madurai-16"/>
+          <Mapview title={ reduxState?.name}
+          phno={ `+91${ reduxState?.contactNumber }`}
+          mapLocation={ getLatLong(reduxState?.mapLocation) }
+          address={ reduxState?.address }/>
           </div>
           <div className="my-4 flex flex-col gap-4">
             <ReviewCard />
@@ -127,10 +143,11 @@ const Overview = () => {
           style={{ height: "fit-content" }}
           className="hidden md:flex md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md flex flex-col gap-4"
         >
-         <Mapview title="Madurai Xpress"
-         phno="+918870465786"
-         mapLocation={ [9.923433046778332, 78.11539586769574 ] }
-         address="No-16 VOC Nagar 5th Street, P.P Chavadi, Madurai-16"/>
+         <Mapview title={ reduxState?.name}
+          phno={ `+91${ reduxState?.contactNumber }`}
+          mapLocation={ getLatLong(reduxState?.mapLocation) }
+          address={ reduxState?.address }/>
+        
         </aside>
       </div>
     </>
