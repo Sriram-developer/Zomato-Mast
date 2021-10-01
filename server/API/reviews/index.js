@@ -6,6 +6,23 @@ import passport from "passport";
 import { ReviewModel } from "../../database/allModels";
 
 const Router = express.Router();
+/*
+Route     /
+Des       Get all review
+Params    resid
+BODY      none
+Access    Public
+Method    GET  
+*/
+Router.get("/:resid", async (req, res) => {
+  try {
+    const reviews = await ReviewModel.find({ restaurant: req.params.resid });
+    return res.json({ reviews });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
 
 /*
 Route   :  /new
@@ -27,7 +44,7 @@ Router.post("/new", async(req, res) => {
 });
 
 /*
-Route   :  /delete/:_id
+Route   :  /delete
 Des     :  Add new food review/rating
 params  :  _id
 Access  :  Public
