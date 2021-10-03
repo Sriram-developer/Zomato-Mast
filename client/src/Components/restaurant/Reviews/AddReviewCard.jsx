@@ -6,7 +6,12 @@ import ReviewModal from "./ReviewModal";
 const AddReviewCard = () => {
     const [isOpen, setIsOpen] = useState(false);
     
-    const openModal = () => setIsOpen(true);
+    const openModal = () => {
+    if(!localStorage.zomatoUser) {
+       return alert("Please sign in to post a review");
+    }
+     setIsOpen(true); 
+};
     return (
         <>
             <ReviewModal isOpen={ isOpen } setIsOpen={ setIsOpen }/>
@@ -24,5 +29,5 @@ const AddReviewCard = () => {
             <button onClick={ openModal } className="text-zomato-400">Write a review</button>
         </>
     );
-}
+};
 export default AddReviewCard;

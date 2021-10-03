@@ -15,6 +15,8 @@ const Router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
+
+
 /*
 Route   :  /
 Des     :  Get Image details
@@ -53,6 +55,7 @@ Router.post("/", upload.single("file"), async (req, res) => {
       };
 
       const uploadImage = await s3Upload(bucketOptions);
+      await ImageModel.create({images: [{ location: uploadImage.Location }] });
 
       return res.status(200).json({ uploadImage });
     } catch (error) {
