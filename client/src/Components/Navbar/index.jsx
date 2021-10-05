@@ -3,6 +3,11 @@ import { FaUserAlt } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
 import { MdArrowDropDown, } from "react-icons/md";
 import { RiSearchLine } from "react-icons/ri";
+import { useSelector, useDispatch } from "react-redux";
+import gravatar from "gravatar";
+
+// Redux action
+import { signOut } from "../../Redux/Reducer/Auth/Auth.action";
 
  // Components
  import SignIn from "../Auth/SignIn";
@@ -10,6 +15,10 @@ import { RiSearchLine } from "react-icons/ri";
 
 const MobileNav = ({ SignIn, SignUp }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const reduxState = useSelector((global) => global.user.user);
+  const dispatch = useDispatch();
+
+  const signOutHandler = () => dispatch(signOut());
     return(
     <div className="flex w-full items-center justify-between lg:hidden">
     <div className="w-28">
@@ -20,7 +29,21 @@ const MobileNav = ({ SignIn, SignUp }) => {
 </div>
 <div className="flex items-center gap-3 relative">
     <button className="bg-zomato-400 text-white py-2 px-3 rounded-full">Use App</button>
-    <span onClick={ () =>setIsDropDownOpen((prev) =>!prev) } className="border p-2 border-gray-300 text-zomato-400 rounded-full">
+    {
+      reduxState?.user?.fullname? (<>
+       <div onClick={ () =>setIsDropDownOpen((prev) =>!prev) } className="border p-2 border-gray-300 text-zomato-400 w-10 h-10 rounded-full">
+        <img src={ gravatar.url(reduxState?.user?.email) } alt={ reduxState?.user?.email } 
+        className="w-full h-full rounded-full object-cover"
+        />
+    </div>
+    {
+      isDropDownOpen && ( <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full bg-white z-20 flex flex-col gap-2">
+       <button onClick={ signOutHandler }>Sign Out</button>
+      </div>
+       ) }
+    
+      </> ):( <>
+       <span onClick={ () =>setIsDropDownOpen((prev) =>!prev) } className="border p-2 border-gray-300 text-zomato-400 rounded-full">
         <FaUserAlt/>
     </span>
     {
@@ -29,6 +52,8 @@ const MobileNav = ({ SignIn, SignUp }) => {
        <button onClick={ SignUp }>Sign Up</button>
       </div>
        ) }
+      </>
+      )}
     </div>
    </div> 
 
@@ -36,6 +61,10 @@ const MobileNav = ({ SignIn, SignUp }) => {
 };
 
 const LargeNav = ({ SignIn, SignUp }) => {
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const reduxState = useSelector((global) => global.user.user);
+  const signOutHandler = () => dispatch(signOut());
+  const dispatch = useDispatch();
     return(
     <>
       <div className="hidden lg:inline container px-20 mx-auto">
@@ -60,10 +89,21 @@ const LargeNav = ({ SignIn, SignUp }) => {
               className="w-full focus:outline-none" />
           </div>
       </div>
-      <div className="ml-28 flex gap-4">
+     { reduxState?.user?.fullname?( <div className="relative w-20">
+       <div onClick={ () =>setIsDropDownOpen((prev) =>!prev) } className="border p-2 border-gray-300 text-zomato-400 w-10 h-10 rounded-full">
+        <img src={ gravatar.url(reduxState?.user?.email) } alt={ reduxState?.user?.email } 
+        className="w-full h-full rounded-full object-cover"
+        />
+    </div>
+    {
+      isDropDownOpen && ( <div className="absolute shadow-lg py-3 -right-4 w-full bg-white z-20 flex flex-col gap-2">
+       <button onClick={ signOutHandler }>Sign Out</button>
+      </div>
+       ) }</div>)
+    : (<div className="ml-28 flex gap-4">
          <button onClick={ SignIn } className="text-gray-500 text-xl hover:text-gray-800">Login</button>
          <button onClick={ SignUp } className="text-gray-500 text-xl hover:text-gray-800">Signup</button>
-      </div> 
+      </div>) }
       </div>
       </div>
     </>
