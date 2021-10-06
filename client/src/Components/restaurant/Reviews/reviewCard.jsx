@@ -11,7 +11,7 @@ const ReviewCard = (props) => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-   dispatch(getUser(props.user)).then((data)=>setUser(data.payload.user.fullname));
+   dispatch(getUser(props.user)).then((data)=>setUser(data.payload.user?.fullname));
   }, []);
 
   return (
