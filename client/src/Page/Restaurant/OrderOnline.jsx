@@ -10,6 +10,7 @@ import FoodList from "../../Components/restaurant/Order-Online/FoodList";
 
 // Redux actions
 import { getFoodList } from "../../Redux/Reducer/Food/Food.action"; 
+import { addCart } from "../../Redux/Reducer/Cart/Cart.action";
 
 const OrderOnline = () => {
   const [menu, setMenu] = useState([]);
@@ -45,7 +46,7 @@ const OrderOnline = () => {
                <h2 className="text-xl font-semibold">Order-Online</h2>
                <h4 className="flex items-center gap-2 font-light text-gray-500"><AiOutlineCompass/> Live Track Your Order | <BiTimeFive/>45 Min</h4>
                </div>
-             <section className="flex h-screen overflow-y-scroll flex-col gap-3 md:gap-5">
+             <section className="flex h-screen lg:overflow-y-scroll flex-col gap-3 md:gap-5">
               { menu.map((item) =>(
                 <FoodList key={ item._id } { ...item }/>
               ))}
