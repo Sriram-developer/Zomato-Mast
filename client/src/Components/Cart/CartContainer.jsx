@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 // components
 import FoodItem from "./FoodItem";
 
-// Redux action
+// Redux action comment
 import { getCart } from "../../Redux/Reducer/Cart/Cart.action";
 
 const CartSM = ({ toggle }) => {
