@@ -87,8 +87,8 @@ const LargeNav = ({ SignIn, SignUp }) => {
       reduxState?.user?.fullname? (<div className="relative w-20">
        <div onClick={ () =>setIsDropDownOpen((prev) =>!prev) } className="border p-2 border-gray-300 text-zomato-400 w-10 h-10 rounded-full">
         <img src={ gravatar.url(reduxState?.user?.email) } alt={ reduxState?.user?.email } 
-        className="w-full h-full rounded-full object-cover"
-        />
+        className="w-full h-full rounded-full object-cover"         
+        /> 
     </div>
     {
       isDropDownOpen && ( <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full bg-white z-20 flex flex-col gap-2">

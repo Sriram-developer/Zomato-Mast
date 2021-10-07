@@ -54,9 +54,8 @@ const MobileNav = ({ SignIn, SignUp }) => {
        ) }
       </>
       )}
+      </div>
     </div>
-   </div> 
-
   );
 };
 
