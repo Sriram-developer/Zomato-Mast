@@ -6,6 +6,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import gravatar from "gravatar";
 import { useSelector } from "react-redux";
+import { Link }  from "react-router-dom";
 
 // Components
 import SignIn from "../Auth/SignIn";
@@ -17,7 +18,10 @@ const MobileNav = ({ SignIn, SignUp }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
     return(
     <div className="flex w-full items-center justify-between lg:hidden">
+         <Link to={`/delivery`}>
         <AiOutlineArrowLeft/>
+        </Link>
+        
     <div className="w-28">
     <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" 
     alt="logo"
@@ -64,10 +68,12 @@ const LargeNav = ({ SignIn, SignUp }) => {
       <div className="hidden lg:inline container px-20 mx-auto">
       <div className="hidden gap-4 w-full items-center justify-between lg:flex">
       <div className="w-28">
+      <Link to={`/delivery`}>
     <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" 
     alt="logo"
     className="w-full h-full focus:outline-none"
     />
+    </Link>
     </div>
       <div className="w-3/4 bg-white shadow-md p-3 flex  items-center gap-3 border border-gray-200 rounded">
           <div className="flex items-center gap-2 border-r-2 border-gray-300 pr-2">

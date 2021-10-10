@@ -3,6 +3,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import gravatar from "gravatar";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const reduxState = useSelector((global) => global.user.user);
