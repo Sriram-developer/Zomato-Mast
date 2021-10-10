@@ -32,7 +32,7 @@ const MenuSimilarRestaurantcard = (props) => {
                 Dining
               </span>
             </div>
-            <h4>Street Food, Beverages, Tea</h4>
+            <h4>Non-Veg Food, curry,roast</h4>
           </div>
         </div>
       </div>

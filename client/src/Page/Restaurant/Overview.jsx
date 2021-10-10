@@ -97,24 +97,24 @@ const Overview = () => {
             <div>
               <Slider {...settings}>
                 <MenuSimilarRestaurantcard
-                  image="https://b.zmtcdn.com/data/pictures/chains/5/18711475/4be376adb66b75764946d00a7dcf9991_featured_v2.jpg?output-format=webp"
-                  title="tea"
+                  image="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnJpZWQlMjBjaGlja2VufGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  title="Fried Chicken"
                 />
                 <MenuSimilarRestaurantcard
-                  image="https://b.zmtcdn.com/data/pictures/chains/5/18711475/4be376adb66b75764946d00a7dcf9991_featured_v2.jpg?output-format=webp"
-                  title="tea"
+                  image="https://media.istockphoto.com/photos/madras-butter-beef-traditional-slow-cook-indian-spicy-chili-lamb-picture-id601930442?b=1&k=20&m=601930442&s=170667a&w=0&h=SkhvG4cccKm7vjv_o-HSSfhybXX9v5xZGD63yLWOeec="
+                  title="Mutton curry"
                 />
                 <MenuSimilarRestaurantcard
-                  image="https://b.zmtcdn.com/data/pictures/chains/5/18711475/4be376adb66b75764946d00a7dcf9991_featured_v2.jpg?output-format=webp"
-                  title="tea"
+                  image="https://media.istockphoto.com/photos/lambhaneethis-a-traditional-dish-with-basmati-rice-closeup-in-a-pan-picture-id1292894074?b=1&k=20&m=1292894074&s=170667a&w=0&h=GBgt-Gm5QCyELq7iz7KMe3vYZxGZqXYNm7-WEtOqYlM="
+                  title="Briyani"
                 />
                 <MenuSimilarRestaurantcard
-                  image="https://b.zmtcdn.com/data/pictures/chains/5/18711475/4be376adb66b75764946d00a7dcf9991_featured_v2.jpg?output-format=webp"
-                  title="tea"
+                  image="https://media.istockphoto.com/photos/barbecued-salmon-fried-potatoes-and-vegetables-on-wooden-background-picture-id1214416414?b=1&k=20&m=1214416414&s=170667a&w=0&h=FZFYYlT2R5BsZK-7433EcdBGkEI43M-HIxnM-FmuEv8="
+                  title="Fish curry"
                 />
                 <MenuSimilarRestaurantcard
-                  image="https://b.zmtcdn.com/data/pictures/chains/5/18711475/4be376adb66b75764946d00a7dcf9991_featured_v2.jpg?output-format=webp"
-                  title="tea"
+                  image="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  title="Burger"
                 />
               </Slider>
             </div>
