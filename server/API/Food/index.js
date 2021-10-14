@@ -67,4 +67,40 @@ Router.get("/r/:category", async (req, res) => {
         return res.status(500).json({ error: error.message });
       }
   });
+  
+ // @Route   POST /foods/new
+// @des     add new food record to database
+// @access  PRIVATE
+Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
+  try {
+    const { foodData } = req.body;
+    const newFood = await FoodModel.create(foodData);
+    return res.json({ foods: newFood });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+// @Route   PATCH /foods/update
+// @des     update exisiitng food data
+// @access  PRIVATE
+Router.patch("/update", passport.authenticate("jwt"), async (req, res) => {
+  try {
+    const { foodData } = req.body;
+    const updateFood = await FoodModel.findByIdAndUpdate(
+      foodData._id,
+      {
+        $set: foodData,
+      },
+      { new: true }
+    );
+
+    if (!updateFood)
+      return res.status(404).json({ foods: "Food record Not Found!!!" });
+
+    return res.json({ foods: updateFood });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
 export default Router;

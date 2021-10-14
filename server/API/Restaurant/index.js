@@ -2,6 +2,7 @@
 import express from "express";
 import passport from "passport";
 
+
 // Database model
 import { RestaurantModel } from "../../database/allModels";
 
@@ -72,6 +73,35 @@ Router.get("/search", async (req,res) => {
         return res.status(500).json({ error: error.message });  
     }
 });
+// @Route   POST /restaurants/new
+// @des     add new restaurant
+// @access  PRIVATE
+Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
+  try {
+    const newRetaurant = await RestaurantModel.create(req.body.restaurantData);
+    return res.json({ restaurants: newRetaurant });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
 
+// @Route   PATCH /restaurants/update
+// @des     update exisitng restaurant data
+// @access  PRIVATE
+Router.patch("/update", passport.authenticate("jwt"), async (req, res) => {
+  try {
+    const updatedRestaurant = await RestaurantModel.findByIdAndUpdate(
+      req.body.retaurantData._id,
+      { $set: req.body.retaurantData },
+      { new: true }
+    );
+    if (!updatedRestaurant)
+      return res.status(404).json({ restaurants: "Restaurant Not Found!!!" });
+
+    return res.json({ restaurants: updatedRestaurant });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
 
 export default Router;
