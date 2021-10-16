@@ -27,8 +27,8 @@ const OrderOnline = () => {
   const dispatch = useDispatch();
   useEffect(() => {
   reduxState && 
-    dispatch(getFoodList(reduxState.menu)).then((data) =>
-    setMenu(data.payload.menus.menus)
+    dispatch(getFoodList(reduxState?.menu)).then((data) =>
+    setMenu(data.payload?.menus?.menus)
   );
   }, [reduxState]);
     return (
@@ -36,7 +36,7 @@ const OrderOnline = () => {
            <div className="w-full h-screen flex">
             <aside className="hidden md:flex flex-col gap-3 border-r overflow-y-scroll border-gray-200 h-screen w-1/4">
              {
-               menu.map(item =>(
+               menu?.map(item =>(
                  <MenuListContainer { ...item } key={ item._id } onClickHandler={ onClickHandler } selected={ selected }/>
                ))
              }
@@ -47,7 +47,7 @@ const OrderOnline = () => {
                <h4 className="flex items-center gap-2 font-light text-gray-500"><AiOutlineCompass/> Live Track Your Order | <BiTimeFive/>45 Min</h4>
                </div>
              <section className="flex h-screen lg:overflow-y-scroll flex-col gap-3 md:gap-5">
-              { menu.map((item) =>(
+              { menu?.map((item) =>(
                 <FoodList key={ item._id } { ...item }/>
               ))}
              </section>

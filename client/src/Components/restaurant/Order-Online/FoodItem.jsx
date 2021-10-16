@@ -15,9 +15,9 @@ const FoodItem = (props) => {
 
   useEffect(() =>{
     dispatch (getFood(props._id)).then((data) => { 
-      setFood(data.payload.foods);
-      dispatch(getImage(data.payload.foods.photos)).then((data) => { 
-        const { images } = data.payload.image; 
+      setFood(data?.payload?.foods);
+      dispatch(getImage(data.payload?.foods?.photos)).then((data) => { 
+        const { images } = data?.payload?.image; 
         images.length &&
          setFood((prev) => ({ ...prev, image:images[0].location }));
       });
@@ -25,7 +25,7 @@ const FoodItem = (props) => {
   }, []);
 
   const addFoodToCart = () => {
-   dispatch(addCart({ ...food, quantity: 1, totalPrice: food.price }));
+   dispatch(addCart({ ...food, quantity: 1, totalPrice: food?.price }));
    setFood((prev) => ({ ...prev, isAddedToCart: true }));
   };
   return (

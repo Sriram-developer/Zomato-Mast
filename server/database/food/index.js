@@ -2,11 +2,17 @@ import mongoose from "mongoose";
 
 const FoodSchema = new mongoose.Schema(
     {
-    name: { type: String, required: true },
-    descript: { type: String, required: true },
-    isVeg: { type: Boolean, required: true },
-    isContainEgg: { type: Boolean, required: true },
-    category: { type: String, required: true },
+    name: String,
+    descript:  String,
+    isVeg: Boolean,
+    isNonVeg: Boolean,
+    isContainEgg: Boolean, 
+    category:  String, 
+    restaurant: {
+        type: mongoose.Types.ObjectId,
+        ref: "Restaurants",
+        
+    },
     photos: {
         type: mongoose.Types.ObjectId,
         ref: "Images",
@@ -18,11 +24,7 @@ const FoodSchema = new mongoose.Schema(
         ref: "Foods",
     },
 ],
-    restaurant: {
-        type: mongoose.Types.ObjectId,
-        ref: "Restaurants",
-        required: true,
-    },
+   
     reviews: {
         type: mongoose.Types.ObjectId,
         ref: "Reviews",

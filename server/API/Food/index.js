@@ -75,7 +75,7 @@ Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
   try {
     const { foodData } = req.body;
     const newFood = await FoodModel.create(foodData);
-    return res.json({ foods: newFood });
+    return res.json({ food: newFood });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

@@ -6,7 +6,7 @@ const ImageGrid = (props) => {
     <>
       <div className="w-full h-60 md:hidden">
         <img
-          src={ props.images.length && props.images[0].location }
+          src="https://zomato-project-123.s3.ap-south-1.amazonaws.com/briyani.jpg"
           alt="restuarant image"
           className="w-full h-full object-cover rounded-lg "
         />
@@ -14,19 +14,19 @@ const ImageGrid = (props) => {
       <div className="hidden w-full h-96 md:flex gap-1">
         <div className="w-full h-full overflow-hidden">
           <img
-            src={ props.images.length && props.images[0].location }
+            src="https://zomato-project-123.s3.ap-south-1.amazonaws.com/briyani.jpg"
             alt="restuarant image"
             className="w-full h-full object-cover rounded-lg transform transition duration-700 hover:scale-110"
           />
         </div>
         <div className="w-1/4  h-full flex flex-col gap-1 overflow-hidden">
           <img
-            src={ props.images.length >=1 && props.images[1].location }
+            src="https://media.istockphoto.com/photos/chicken-tikka-biryani-made-of-basmati-rice-cooked-with-masala-spices-picture-id1292436403?b=1&k=20&m=1292436403&s=170667a&w=0&h=h-uGAfCfqbnMsnRq_DcCVB_Jcq1I2by24vBMH0xJgYo="
             alt="restuarant image"
             className="w-full h-2/4 object-cover rounded-lg  transform transition duration-700 hover:scale-110"
           />
           <img
-            src={ props.images.length >=2 && props.images[2].location}
+            src="https://media.istockphoto.com/photos/bacon-burger-picture-id520215281?b=1&k=20&m=520215281&s=170667a&w=0&h=zeCb3SA1h2PJhk21K2jFR8QttbqMBq4L-8uGkQLH7OQ="
             alt="restuarant image"
             className="w-full h-2/4 object-cover rounded-lg  transform transition duration-700 hover:scale-110"
           />
@@ -34,7 +34,7 @@ const ImageGrid = (props) => {
         <div className="w-1/4 h-full flex flex-col gap-1 overflow-hidden">
           <div className="w-full h-2/4 relative ">
             <img
-              src={ props.images.length >=3 && props.images[3].location}
+              src="https://media.istockphoto.com/photos/indian-pulav-or-vegetables-rice-or-veg-biryani-orange-background-picture-id495201462?b=1&k=20&m=495201462&s=170667a&w=0&h=d-F-A6t1sdPqER5Z_FCJrcxhrF8Hffm60gmJ_8YuS0Y="
               alt="restuarant image"
               className="w-full h-full object-cover rounded-lg "
             />
@@ -45,7 +45,7 @@ const ImageGrid = (props) => {
           </div>
           <div className="w-full h-2/4 relative ">
             <img
-              src={ props.images.length >=4 && props.images[4].location }
+              src="https://media.istockphoto.com/photos/mojito-with-white-rum-lime-mint-and-crushed-ice-picture-id184333471?b=1&k=20&m=184333471&s=170667a&w=0&h=7rMBPyQxLbbcDAH63_vF_tb6zX2hweyQk71sUpPtnXI="
               alt="restuarant image"
               className="w-full h-full object-cover rounded-lg "
             />

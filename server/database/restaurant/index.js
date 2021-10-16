@@ -13,6 +13,9 @@ const RestaurantSchema = new mongoose.Schema(
     popularDishes: [String],
     averageCost: Number,
     amenties: [String],
+    ispro: Boolean,
+    isoff: Number,
+    durationOfdelivery: Number,
     menuImages: {
         type: mongoose.Types.ObjectId,
         ref: "Images",

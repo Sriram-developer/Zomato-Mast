@@ -21,7 +21,7 @@ const Photos = () => {
        if (reduxState) {
        dispatch(getImage(reduxState?.photos)).then((data) => { 
       const images = [];
-      data.payload.image.images.map(({ location }) =>images.push(location));
+      data.payload?.image?.images?.map(({ location }) =>images.push(location));
       setPhotos(images);
     });
   }

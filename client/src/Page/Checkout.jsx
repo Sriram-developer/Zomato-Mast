@@ -46,8 +46,8 @@ const Checkout = () => {
         alert("Payment Done");
       },
       prefill: {
-        name: reduxStateUser.fullname,
-        email: reduxStateUser.email,
+        name: reduxStateUser?.fullname,
+        email: reduxStateUser?.email,
       },
       theme: { color: "#e23744" },
     };
