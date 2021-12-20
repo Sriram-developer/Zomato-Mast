@@ -79,7 +79,7 @@ const LargeNav = ({ SignIn, SignUp }) => {
              <span className="text-zomato-400">
                  <HiLocationMarker/>
              </span>
-             <input type="text" placeholder="Madurai" className="focus:outline-none" />
+             <input type="text" placeholder="Kodaikanal" className="focus:outline-none" />
              <MdArrowDropDown/>
           </div>
           <div className="flex w-full items-center gap-2">
